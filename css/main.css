@@ -16,7 +16,9 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
     border-radius: 7px;
     color: #e5e5e5;
 }
-
+#loc_listings_wrapper{
+    padding:15px;	
+}
 .main_container div{
    display: inline-block;
     padding-right: 15px;

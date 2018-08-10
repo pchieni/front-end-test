@@ -50,6 +50,45 @@ var initializeSelect2 = function(select2Arr){
 	    });	
 	}
 };
+
+var loadLocations = function(){
+	var tokenS = localStorage.getItem("token");
+	$.ajax({
+		url : base_url + '/api/v1/locations/',
+		type : 'GET',
+		// Authorization: 'Bearer ' + tokenS,
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader("Authorization", "Bearer " + tokenS)
+		},		
+		success: function(response) {
+			
+			var resultTable = $('#loc_listings').DataTable({
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "aTargets": [3]
+                }],
+                "columns": [
+                    { data: 'id' },
+                    { data: 'name' },
+                    { data: 'is_active' },
+                    { data: 'loc_order' }                        
+                ],
+                "destroy": true,
+                "dom": 'lrtip',
+                "language": {
+                    "emptyTable": "No match member found",
+                    "infoFiltered": " "
+                },
+                "order": [[2, "desc"]]
+            });
+            resultTable.rows.add(response.results).draw();
+            dataSet = response.results;
+        },
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(textStatus);
+		}
+	})
+}
 var loginDetails = function(){
 	var tokenS = localStorage.getItem("token");
 	$.ajax({

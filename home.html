@@ -11,9 +11,20 @@
 <title>API</title>
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template
 <link href="fonts/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	rel="stylesheet" type="text/css">-->
+
+<link rel="stylesheet"
+	href="vendor/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/jquery.dataTables.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/buttons.dataTables.min.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/rowReorder.dataTables.min.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/responsive.dataTables.min.css">
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -39,28 +50,26 @@
 				<li class="nav-item active" data-toggle="tooltip"
 					data-placement="right" title="Data Source"><a class="nav-link"
 					href="home.html"> <i class="fa fa-fw fa-database"></i> <span
-						class="nav-link-text">Locations</span> </a>
+						class="nav-link-text">Locations</span> </a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Text Source"><a class="nav-link" href="register.html">
+						<i class="fa fa-fw fa-book"></i> <span class="nav-link-text">Register
+							User</span> </a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="logs"><a class="nav-link" href="music_categories.html">
+						<i class="fa fa-fw fa-history"></i> <span class="nav-link-text">Music/video
+							categories</span> </a>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Text Source"><a class="nav-link"
-					href="register.html"> <i class="fa fa-fw fa-book"></i> <span
-						class="nav-link-text">Register User</span> </a>
-				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="logs"><a class="nav-link" href="music_categories.html"> <i
-						class="fa fa-fw fa-history"></i> <span class="nav-link-text">Music/video
-							categories</span> </a></li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title=Crawler><a class="nav-link" href="music_per_category.html"> <i
+					title=Crawler><a class="nav-link"
+					href="music_per_category.html"> <i
 						class="fa fa-fw fa-clipboard"></i> <span class="nav-link-text">Music/video
-							per category</span> </a>
-				</li>
+							per category</span> </a></li>
 
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
 				<li class="nav-item"><a class="nav-link text-center"
-					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i> </a>
-				</li>
+					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i> </a></li>
 			</ul>
 		</div>
 	</nav>
@@ -68,13 +77,23 @@
 		<div class="container-fluid">
 			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Home</a>
-				</li>
+				<li class="breadcrumb-item"><a href="#">Home</a></li>
 				<li class="breadcrumb-item active">Locations</li>
 			</ol>
 
 			<!-- Data selections-->
-			<div class="row"></div>
+			<div class="">
+				<div class="card mb-3">
+					<table class="table stripped" id="loc_listings">
+						<thead>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Is Active</th>
+							<th>Location Order</th>
+						</thead>
+					</table>
+				</div>
+			</div>
 
 		</div>
 		<!-- Example DataTables Card-->
@@ -100,9 +119,15 @@
 	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin.min.js"></script>
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="vendor/datatables/js/jquery.dataTables.js"></script>
+	<script src="vendor/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="vendor/datatables/js/dataTables.rowReorder.min.js"></script>
+	<script src="vendor/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="js/main.js"></script>
 	<script>
 		loginDetails();
+		loadLocations();
 	</script>
 
 </body>
