@@ -74,31 +74,5 @@ var loginDetails = function(){
 			console.log(textStatus);
 		}
 	})
-	
-	/*
-	 $.ajax({
-			url : "http://api.smartduka.busaracenterlab.org/#users-current-user-list",
-			type : "POST",
-			data : {
-				token : tokenS,
-				client_id: 'qNJ2qahu5XW90r5o40VJYRuC4IOt6URQgZe1yqRe',
-		        client_secret: '5lAwZFI4t1l1UUAhw3f6oAjEkjky3nhdMgQlnjIjzoOEzZMc0X9aeXOyfbHSy5D7MzQo61wSTHSeH2mgGAugwoeBlbsnyfKl7p2sMObZWIS6EFlmXUSdADxN41giNgVe',
-			},
-			// handle a successful response
-			success : function(json) {
-				$('#post-text').val(''); // remove the value from the input
-				console.log(json); // log the returned json to the console
-				localStorage.setItem("token", json.access_token);
-             //				/alert("success"); // another sanity check
-				window.location = "home.html";
-			},
-
-			// handle a non-successful response
-			error : function(xhr, errmsg, err) {
-				
-				console.log(xhr.status + ": " + xhr.responseText); 
-			}
-		});
-		*/
 }
 
