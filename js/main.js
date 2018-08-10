@@ -1,3 +1,4 @@
+var base_url = "http://api.smartduka.busaracenterlab.org";
 $(document).ready(function() {
 	
 	$("#Login").on("submit", function (e) {
@@ -7,7 +8,7 @@ $(document).ready(function() {
 	    var password = $("#password").val();
 	    
 	    $.ajax({
-			url : "http://api.smartduka.busaracenterlab.org/oauth/token/",
+			url : base_url + "/oauth/token/",
 			type : "POST",
 			data : {
 				grant_type: 'password',
@@ -21,7 +22,7 @@ $(document).ready(function() {
 				$('#post-text').val(''); // remove the value from the input
 				console.log(json); // log the returned json to the console
 				localStorage.setItem("token", json.access_token);
-                //				/alert("success"); // another sanity check
+                // /alert("success"); // another sanity check
 				window.location = "home.html";
 			},
 
@@ -52,21 +53,22 @@ var initializeSelect2 = function(select2Arr){
 var loginDetails = function(){
 	var tokenS = localStorage.getItem("token");
 	$.ajax({
-		url : 'http://api.smartduka.busaracenterlab.org/api/v1/users/current-user',
+		url : base_url + '/api/v1/users/current-user',
 		type : 'GET',
-		//Authorization: 'Bearer ' + tokenS,
+		// Authorization: 'Bearer ' + tokenS,
 		beforeSend : function(xhr) {
 			xhr.setRequestHeader("Authorization", "Bearer " + tokenS)
 		},
 		success : function(data) {
-			//var obj = JSON.parse(data);
+			// var obj = JSON.parse(data);
 			console.log(data);
-			//{"id":70,"email":"pchieni25@gmail.com","first_name":"Patrick","last_name":"Patrick","is_active":true,"is_staff":true,"is_superuser":true,"groups":[],"phone_number":null,"is_trainer":false,"trainer_id":null,"trainees":[],"date_joined":"2018-08-09T09:46:39+03:00","location":13}
+			// {"id":70,"email":"pchieni25@gmail.com","first_name":"Patrick","last_name":"Patrick","is_active":true,"is_staff":true,"is_superuser":true,"groups":[],"phone_number":null,"is_trainer":false,"trainer_id":null,"trainees":[],"date_joined":"2018-08-09T09:46:39+03:00","location":13}
 					
 			var htmlString = "<div class='main_container'>" +
-					"<div>" + data.email + "</div>" +
+					
 							"<div>" + data.first_name + " " + data.last_name + "</div>" +
-									"<div> Phone Number " + data.phone_number + "</div>";
+								"<div> Phone Number " + data.phone_number + "</div>" +
+									"<div>" + data.email + "</div>";
 			$("#login-details").html(htmlString);
 			
 		},

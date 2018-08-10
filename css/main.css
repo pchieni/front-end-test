@@ -12,13 +12,16 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
   line-height: 50px;
 }
 .main_container{
-      width: 374px;
-    margin-left: 100px;
-    margin-top: 20px;
-    border: 1px solid #e5e5e5;
     padding: 10px;
     border-radius: 7px;
-    color: #888;	
+    color: #e5e5e5;
+}
+
+.main_container div{
+   display: inline-block;
+    padding-right: 15px;
+    border-right: 1px solid #a5a5a5;
+    padding-left: 15px;
 }
 #alert{
     color: red;

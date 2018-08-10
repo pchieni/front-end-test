@@ -1,32 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>API</title>
+<!-- Bootstrap core CSS-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="fonts/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
-<body id="home">
-	<div id="login-details"></div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+		<a class="navbar-brand" href="javascript: void(0);">Front End Test</a>
+		<div id="login-details"></div>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+				<li class="nav-item active" data-toggle="tooltip"
+					data-placement="right" title="Data Source"><a class="nav-link"
+					href="home.html"> <i class="fa fa-fw fa-database"></i> <span
+						class="nav-link-text">Locations</span> </a>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Text Source"><a class="nav-link"
+					href="register.html"> <i class="fa fa-fw fa-book"></i> <span
+						class="nav-link-text">Register User</span> </a>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="logs"><a class="nav-link" href="music_categories.html"> <i
+						class="fa fa-fw fa-history"></i> <span class="nav-link-text">Music/video
+							categories</span> </a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title=Crawler><a class="nav-link" href="music_per_category.html"> <i
+						class="fa fa-fw fa-clipboard"></i> <span class="nav-link-text">Music/video
+							per category</span> </a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav sidenav-toggler">
+				<li class="nav-item"><a class="nav-link text-center"
+					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i> </a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Home</a>
+				</li>
+				<li class="breadcrumb-item active">Locations</li>
+			</ol>
+
+			<!-- Data selections-->
+			<div class="row"></div>
+
+		</div>
+		<!-- Example DataTables Card-->
+
+	</div>
+	<!-- /.container-fluid-->
+	<!-- /.content-wrapper-->
+	<footer class="sticky-footer">
+		<div class="container">
+			<div class="text-center">
+				<small>Copyright © Patrick 2018</small>
+			</div>
+		</div>
+	</footer>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fa fa-angle-up"></i> </a>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin.min.js"></script>
 	<script src="js/main.js"></script>
 	<script>
-			loginDetails();
-	        //alert(localStorage.getItem("token"));
+		loginDetails();
 	</script>
+
 </body>
+
 </html>
