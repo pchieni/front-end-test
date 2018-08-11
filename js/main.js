@@ -51,6 +51,16 @@ var initializeSelect2 = function(select2Arr){
 	}
 };
 
+var loginStatus =  function(){
+
+	var tokenS = localStorage.getItem("token");
+	//alert(tokenS);
+	if(tokenS==""){
+		
+		window.location = "index.html";
+	}
+}
+
 var loadLocations = function(){
 	var tokenS = localStorage.getItem("token");
 	$.ajax({
@@ -67,6 +77,7 @@ var loadLocations = function(){
                     "bSortable": false,
                     "aTargets": [3]
                 }],
+                "pageLength": 5,
                 "columns": [
                     { data: 'id' },
                     { data: 'name' },
@@ -89,6 +100,101 @@ var loadLocations = function(){
 		}
 	})
 }
+
+var loadCategories = function(){
+		
+	var tokenS = localStorage.getItem("token");
+	$.ajax({
+		url : base_url + '/api/v1/categories/',
+		type : 'GET',
+		// Authorization: 'Bearer ' + tokenS,
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader("Authorization", "Bearer " + tokenS)
+		},		
+		success: function(response) {
+			var data = response["results"];
+			var htmlString = "";
+			for(var i in data){
+				htmlString += "<option value='" + data[i]["id"] + "'>" + data[i]["name"] + "</option>";
+			}
+			$("#categories").html(htmlString);
+			//console.log(response["results"]);
+        },
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(textStatus);
+		}
+	})
+}
+
+$("#categories").change(
+		function() {		
+			loadVideos($(this).val());
+		});
+
+var loadVideos = function(id){
+	
+	$("#music_listings").html("<thead>" +
+							"<th>ID</th>" +
+ 							"<th>Name</th>" +
+							"<th>File Path</th>" +
+							"<th>Description</th>" +
+							"<th>Category Name</th>" +
+							"<th>Is Active</th>" +
+						"</thead>");
+	var url = "";
+	if(id==0){
+		 url = base_url + '/api/v1/videos/';
+	}else{
+		 url = base_url + '/api/v1/videos/?category_id=' + id;
+	}
+	
+	var tokenS = localStorage.getItem("token");
+	$.ajax({
+		url : url,
+		type : 'GET',
+		// Authorization: 'Bearer ' + tokenS,
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader("Authorization", "Bearer " + tokenS)
+		},		
+		success: function(response) {
+			
+			var resultTable = $('#music_listings').DataTable({
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                    "aTargets": [3]
+                }],
+                "pageLength": 5,
+                "columns": [
+                    { data: 'id' },
+                    { data: 'name' },
+                    { data: 'file_path' },
+                    { data: 'description' } ,
+                    { data: 'category_name' },
+                    { data: 'is_active' } 
+                ],
+                "destroy": true,
+                "dom": 'lrtip',
+                "language": {
+                    "emptyTable": "No match member found",
+                    "infoFiltered": " "
+                },
+                "order": [[2, "desc"]]
+            });
+            resultTable.rows.add(response.results).draw();
+            dataSet = response.results;
+            
+            //resultTable.ajax.reload();
+        },
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(textStatus);
+		}
+	})
+}
+
+var logout = function(){
+	localStorage.setItem("token", '');
+	window.location = "index.html";
+}
 var loginDetails = function(){
 	var tokenS = localStorage.getItem("token");
 	$.ajax({
@@ -107,7 +213,8 @@ var loginDetails = function(){
 					
 							"<div>" + data.first_name + " " + data.last_name + "</div>" +
 								"<div> Phone Number " + data.phone_number + "</div>" +
-									"<div>" + data.email + "</div>";
+									"<div>" + data.email + "</div>" + 
+									"<div><a href='javascript:void(0)' onclick='logout();'>Logout</a></div>";
 			$("#login-details").html(htmlString);
 			
 		},

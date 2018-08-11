@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>API</title>
+<!-- Bootstrap core CSS-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom fonts for this template
+<link href="fonts/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">-->
+
+<link rel="stylesheet"
+	href="vendor/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/jquery.dataTables.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/buttons.dataTables.min.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/rowReorder.dataTables.min.css">
+<link rel="stylesheet"
+	href="vendor/datatables/css/responsive.dataTables.min.css">
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+		<a class="navbar-brand" href="javascript: void(0);">Front End Test</a>
+		<div id="login-details"></div>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+				<li class="nav-item " data-toggle="tooltip" data-placement="right"
+					title="Data Source"><a class="nav-link" href="home.html">
+						<i class="fa fa-fw fa-database"></i> <span class="nav-link-text">Locations</span>
+				</a>
+				</li>
+				<li class="nav-item active" data-toggle="tooltip"
+					data-placement="right" title="Text Source"><a class="nav-link"
+					href="register.html"> <i class="fa fa-fw fa-book"></i> <span
+						class="nav-link-text">Register User</span> </a>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="logs"><a class="nav-link" href="music_categories.html">
+						<i class="fa fa-fw fa-history"></i> <span class="nav-link-text">Music/video
+							categories</span> </a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title=Crawler><a class="nav-link"
+					href="music_per_category.html"> <i
+						class="fa fa-fw fa-clipboard"></i> <span class="nav-link-text">Music/video
+							per category</span> </a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav sidenav-toggler">
+				<li class="nav-item"><a class="nav-link text-center"
+					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i> </a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Home</a>
+				</li>
+				<li class="breadcrumb-item active">Locations</li>
+			</ol>
+
+			<!-- Data selections-->
+			<div class="">
+				<div class="card mb-3">
+					<div class="well tab-content">
+
+						<div class="tab-pane active" id="post-object-form">
+
+							<form action="/api/v1/users/register/" method="POST"
+								enctype="multipart/form-data" class="form-horizontal"
+								novalidate="">
+								<fieldset>
+									<input type="hidden" name="csrfmiddlewaretoken"
+										value="Ne4jp6csDpAQfJL4XNISIgQM0QTbqUPiaGVFwiBxn9h4eG1LQZHGF2H6FTr2AEZ4">
+
+									<div class="form-group ">
+
+										<label class="col-sm-2 control-label "> Email address
+											or phone number (international format) </label>
+
+
+										<div class="col-sm-10">
+											<input name="email" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group ">
+										<label class="col-sm-2 control-label "> First name </label>
+										<div class="col-sm-10">
+											<input name="first_name" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group ">
+										<label class="col-sm-2 control-label "> Last name </label>
+										<div class="col-sm-10">
+											<input name="last_name" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group horizontal-checkbox ">
+										<label class="col-sm-2 control-label "> Active </label>
+										<div class="col-sm-10">
+											<input type="checkbox" name="is_active" value="true">
+											<span class="help-block">Designates whether this user
+												should be treated as active. Unselect this instead of
+												deleting accounts.</span>
+										</div>
+									</div>
+									<div class="form-group horizontal-checkbox ">
+										<label class="col-sm-2 control-label "> Staff status </label>
+										<div class="col-sm-10">
+											<input type="checkbox" name="is_staff" value="true">
+											<span class="help-block">Designates whether the user
+												can log into this admin site.</span>
+										</div>
+									</div>
+									<div class="form-group horizontal-checkbox ">
+										<label class="col-sm-2 control-label "> Superuser
+											status </label>
+										<div class="col-sm-10">
+											<input type="checkbox" name="is_superuser" value="true">
+											<span class="help-block">Designates that this user has
+												all permissions without explicitly assigning them.</span>
+
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label "> Groups </label>
+										<div class="col-sm-10">
+											<select multiple="" disabled="" class="form-control"
+												name="groups">
+												<option>No items to select.</option>
+
+											</select> <span class="help-block">The groups this user belongs
+												to. A user will get all permissions granted to each of their
+												groups.</span>
+
+										</div>
+									</div>
+									<div class="form-group ">
+
+										<label class="col-sm-2 control-label "> Phone number </label>
+										<div class="col-sm-10">
+											<input name="phone_number" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group horizontal-checkbox ">
+
+										<label class="col-sm-2 control-label "> Is trainer ? </label>
+
+
+										<div class="col-sm-10">
+											<input type="checkbox" name="is_trainer" value="true">
+
+										</div>
+									</div>
+									<div class="form-group">
+
+										<label class="col-sm-2 control-label "> Trainees </label>
+
+
+										<div class="col-sm-10">
+											<select multiple="" class="form-control" name="trainees">
+												
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group ">
+										<label class="col-sm-2 control-label "> Date joined </label>
+										<div class="col-sm-10">
+											<input name="date_joined" class="form-control"
+												type="datetime-local">
+										</div>
+									</div>
+									<div class="form-group">
+
+										<label class="col-sm-2 control-label "> Location </label>
+
+
+										<div class="col-sm-10">
+											<select class="form-control" name="location">
+
+												<option value="" selected="">--------</option>
+												<option value="2">Makadara</option>
+												<option value="3">Dangoretti South</option>
+												<option value="4">Dangoretti North</option>
+												<option value="1">Kibera</option>
+												<option value="5">Mathare</option>
+												<option value="6">Location</option>
+												<option value="7">Kitengela</option>
+												<option value="8">Mlolongo</option>
+												<option value="9">Ngong</option>
+												<option value="10">Kiserian</option>
+												<option value="11">Kitisuru</option>
+												<option value="12">Nairobi</option>
+												<option value="13">Test Location</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group ">
+										<label class="col-sm-2 control-label "> Password </label>
+										<div class="col-sm-10">
+											<input name="password" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-actions">
+										<button class="btn btn-primary"
+											title="Make a POST request on the User Instance resource">POST</button>
+									</div>
+								</fieldset>
+							</form>
+
+						</div>
+
+
+						<div class="tab-pane" id="post-generic-content-form">
+
+							<form action="/api/v1/users/register/" method="POST"
+								class="form-horizontal">
+								<fieldset>
+
+
+
+									<div class="form-group">
+										<label for="id__content_type" class="col-sm-2 control-label">Media
+											type:</label>
+										<div class="col-sm-10">
+											<select name="_content_type" id="id__content_type"
+												data-override="content-type" class="form-control">
+												<option value="application/json" selected="">application/json</option>
+
+												<option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+
+												<option value="multipart/form-data">multipart/form-data</option>
+
+											</select> <span class="help-block"></span>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="id__content" class="col-sm-2 control-label">Content:</label>
+										<div class="col-sm-10">
+											<textarea name="_content" cols="40" id="id__content"
+												rows="10" data-override="content" class="form-control">{
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "is_active": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "groups": [],
+    "phone_number": "",
+    "is_trainer": false,
+    "trainees": [],
+    "date_joined": null,
+    "location": null,
+    "password": ""
+}</textarea>
+											<span class="help-block"></span>
+										</div>
+									</div>
+
+
+									<div class="form-actions">
+										<button class="btn btn-primary"
+											title="Make a POST request on the User Instance resource">POST</button>
+									</div>
+								</fieldset>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- Example DataTables Card-->
+
+	</div>
+	<!-- /.container-fluid-->
+	<!-- /.content-wrapper-->
+	<footer class="sticky-footer">
+		<div class="container">
+			<div class="text-center">
+				<small>Copyright © Patrick 2018</small>
+			</div>
+		</div>
+	</footer>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fa fa-angle-up"></i> </a>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin.min.js"></script>
+	<script src="vendor/datatables/js/jquery.dataTables.js"></script>
+	<script src="vendor/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="vendor/datatables/js/dataTables.rowReorder.min.js"></script>
+	<script src="vendor/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		loginDetails();
+		loadLocations();
+	</script>
+
+</body>
+
+</html>

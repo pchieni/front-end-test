@@ -47,7 +47,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-				<li class="nav-item active" data-toggle="tooltip"
+				<li class="nav-item " data-toggle="tooltip"
 					data-placement="right" title="Data Source"><a class="nav-link"
 					href="home.html"> <i class="fa fa-fw fa-database"></i> <span
 						class="nav-link-text">Locations</span> </a></li>
@@ -55,7 +55,7 @@
 					title="Text Source"><a class="nav-link" href="register.html">
 						<i class="fa fa-fw fa-book"></i> <span class="nav-link-text">Register
 							User</span> </a></li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+				<li class="nav-item active" data-toggle="tooltip" data-placement="right"
 					title="logs"><a class="nav-link" href="music_categories.html">
 						<i class="fa fa-fw fa-history"></i> <span class="nav-link-text">Music/video
 							categories</span> </a>
@@ -84,12 +84,14 @@
 			<!-- Data selections-->
 			<div class="">
 				<div class="card mb-3">
-					<table class="table stripped" id="loc_listings">
+					<table class="table stripped" id="music_listings">
 						<thead>
 							<th>ID</th>
 							<th>Name</th>
+							<th>File Path</th>
+							<th>Description</th>
+							<th>Category Name</th>
 							<th>Is Active</th>
-							<th>Location Order</th>
 						</thead>
 					</table>
 				</div>
@@ -126,7 +128,7 @@
 	<script src="js/main.js"></script>
 	<script>
 		loginDetails();
-		loadLocations();
+		loadVideos(0);
 		loginStatus();
 	</script>
 
